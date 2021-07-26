@@ -26,6 +26,7 @@ public class TestComparable {
         System.out.println(list);
     }
 
+
     @Test
     public void test02() {
         List<Person> list = new ArrayList<Person>();
