@@ -28,7 +28,7 @@ public class TestComparable {
 
 
     /**
-     * 可对
+     * 可对实现了Comparable的类进行内部排序
      */
     @Test
     public void test02() {
