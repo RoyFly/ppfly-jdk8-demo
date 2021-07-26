@@ -25,11 +25,6 @@ import java.util.function.Consumer;
  * 上联：左右遇一括号省
  * 下联：左侧推断类型省
  * 横批：能省则省
- * <p>
- * 三、函数式接口@FunctionalInterface:
- * 定义：接口中只有一个方法的接口称为函数式接口
- * 使用注解@FunctionalInterface修饰，可以检查接口是否是函数式接口
- * Lambda表达式需要函数式接口的支持
  */
 public class TestLambda02 {
 
