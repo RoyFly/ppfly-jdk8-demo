@@ -27,6 +27,9 @@ public class TestComparable {
     }
 
 
+    /**
+     * ¿É¶Ô
+     */
     @Test
     public void test02() {
         List<Person> list = new ArrayList<Person>();
