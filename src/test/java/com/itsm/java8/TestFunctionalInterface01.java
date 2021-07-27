@@ -1,7 +1,7 @@
 package com.itsm.java8;
 
-import com.itsm.interf.MyFunction;
-import com.itsm.interf.MyFunction2;
+import com.itsm.function.MyFunction;
+import com.itsm.function.MyFunction2;
 import org.junit.Test;
 
 /**
@@ -10,7 +10,7 @@ import org.junit.Test;
  * 使用注解@FunctionalInterface修饰，可以检查接口是否是函数式接口
  * Lambda表达式需要函数式接口的支持
  */
-public class TestFunctionalInterface {
+public class TestFunctionalInterface01 {
 
     @Test
     public void test01() {

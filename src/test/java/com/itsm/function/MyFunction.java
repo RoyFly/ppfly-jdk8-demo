@@ -1,4 +1,4 @@
-package com.itsm.interf;
+package com.itsm.function;
 
 @FunctionalInterface
 public interface MyFunction {

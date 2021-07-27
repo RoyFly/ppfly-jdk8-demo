@@ -1,7 +1,7 @@
 package com.itsm.java8;
 
-import com.itsm.pattern.MyPredicate;
-import com.itsm.pattern.PredicateEmployeeBySalary;
+import com.itsm.predicate.MyPredicate;
+import com.itsm.predicate.PredicateEmployeeBySalary;
 import com.itsm.vo.Employee;
 import org.junit.Before;
 import org.junit.Test;

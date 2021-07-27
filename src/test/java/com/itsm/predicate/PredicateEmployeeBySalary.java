@@ -1,4 +1,4 @@
-package com.itsm.pattern;
+package com.itsm.predicate;
 
 import com.itsm.vo.Employee;
 

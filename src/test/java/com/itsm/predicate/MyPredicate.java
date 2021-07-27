@@ -1,4 +1,4 @@
-package com.itsm.pattern;
+package com.itsm.predicate;
 
 public interface MyPredicate<T> {
     boolean test(T t);
