@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 外部排序（定制排序）
+ */
 public class TestComparator {
     /**
      * ①对于Integer的内部排序，只能升序排序。我可排序后使用集合的 Collections#reverse方法，得到降序排序

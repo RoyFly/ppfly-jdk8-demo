@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 内部排序(自然排序)
+ */
 public class TestComparable {
 
     /**
