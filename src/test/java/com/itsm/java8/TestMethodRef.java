@@ -1,36 +1,35 @@
 package com.itsm.java8;
 
 import com.itsm.vo.Employee;
+import com.itsm.vo.User;
 import org.junit.Test;
 
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
 
 /**
  * 一、方法引用
  * 1、说明：
- * 　　若Lambda体中的内容已经有方法实现了，我们可以使用方法引用.
+ * <p>
+ * 　　若Lambda表达式的主体仅包含一个表达式，且该表达式仅调用了一个已经存在的方法，我们可以使用方法引用.
  * 　　方法引用的使用在很多情况下简化了lambda表达式
  * 2、前提：
- * 　　Lambda表达式中调用方法的参数列表和返回值类型，要与函数式接口中抽象方法的参数列表和返回值类型保持一致
+ * 　　方法引用所使用方法的入参和返回值与lambda表达式实现的函数式接口的入参和返回值一致
  * 3、语法格式
- * 　　对象名：实例方法名
+ * 　　对象名：实例方法名（特定对象的实例方法引用）
  * 　　类名：静态方法名
- * 　　类名：实例方法名
+ * 　　类名：实例方法名（类的任意对象的实例方法引用）
  * <p>
  * 二、构造器引用
  * 1、前提：
  * 　　需要调用构造器的参数列表要与函数式接口中抽象方法的参数列表保持一致
  * 2、语法格式
- * 　　对象名：实例方法名
+ * 　　类名：new
  * <p>
  * 二、数组引用
  * 1、语法格式
- * 　　对象名：实例方法名
+ * 　　类名[]：new
  */
 public class TestMethodRef {
 
@@ -93,11 +92,20 @@ public class TestMethodRef {
         final boolean ac = biPredicate.test(a, c);
         System.out.println("【a==b? " + ab + "】【a==c? " + ac + "】");
 
-        //若Lambda表达式参数列表的第一个参数是实例方法的调用者，第二个参数是实例方法的参数时，可以使用类名::实例方法名
+        //lambda表达式的第一个入参为实例方法的调用者，后面的入参与实例方法的入参一致时，可以使用类名::实例方法名
         BiPredicate<String, String> biPredicate1 = String::equals;
         final boolean ab1 = biPredicate1.test(a, b);
         final boolean ac1 = biPredicate1.test(a, c);
         System.out.println("【a==b? " + ab1 + "】【a==c? " + ac1 + "】");
+
+        System.out.println("-------------------");
+        Function<User, String> function = (user) -> user.getName();
+        final String userName = function.apply(new User("张三"));
+        System.out.println("userName=" + userName);
+
+        Function<User, List<String>> function1 = User::getHobbies;
+        final List<String> hobbies = function1.apply(new User("张三", "乒乓球", "羽毛球", "游泳", "射击"));
+        System.out.println("爱好：" + hobbies);
     }
 
     /**
@@ -128,8 +136,19 @@ public class TestMethodRef {
         BiFunction<String, Integer, Employee> biFunction1 = Employee::new;
         final Employee employee5 = biFunction1.apply("张三", 23);
         System.out.println(employee5);
+
+        Supplier<List<String>> supplier2 = () -> new ArrayList<String>();
+        final List<String> list = supplier2.get();
+        System.out.println(list);
+
+        Supplier<List<String>> supplier3 = ArrayList<String>::new;
+        final List<String> list1 = supplier3.get();
+        System.out.println(list1);
     }
 
+    /**
+     * 数组引用
+     */
     @Test
     public void test06() {
         String[] arr = new String[2];
