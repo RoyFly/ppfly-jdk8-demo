@@ -5,10 +5,7 @@ import com.itsm.vo.User;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -21,6 +18,9 @@ import java.util.stream.Stream;
  * 二、映射
  * 　　　map()：接收Lambda，将元素转换为其他形式或提取信息。就收一个函数作为参数，该函数会被应用到每一个元素上，并将其映射成一个新的元素
  * 　　　flatMap()：扁平化映射，它具体的操作是将多个stream连接成一个stream，这个操作是针对类似多维数组的，比如集合里面包含集合，相当于降维作用。
+ * 三、排序
+ * 　　　sort()：将流中的元素按照自然排序方式进行排序（内部排序）
+ * 　　　sort(Comparator com)：外部排序（定制排序）
  */
 public class TestStreamAPI02 {
     private List<Employee> list = new ArrayList<>();
@@ -191,6 +191,24 @@ public class TestStreamAPI02 {
 
     }
 
+    @Test
+    public void testSort() {
+        List<Integer> integerList = Arrays.asList(8, 4, 2, 6, 9, 1);
+        integerList.stream().sorted().forEach(System.out::println);
+        System.out.println("-----------------");
+
+        //对员工年龄进行排序
+        list.stream().map(Employee::getAge).sorted(Integer::compareTo).forEach(System.out::println);
+        System.out.println("-----------------");
+
+        //对员工进行排序（先按年龄自然排序，再按薪水倒排）
+        list.stream().sorted((e1, e2) -> {
+            if (Integer.compare(e1.getAge(), e2.getAge()) == 0) {
+                return Double.compare(e1.getSalary(), e2.getSalary());
+            }
+            return Integer.compare(e1.getAge(), e2.getAge());
+        }).forEach(System.out::println);
+    }
 
 }
 
